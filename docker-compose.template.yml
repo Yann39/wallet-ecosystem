@@ -226,6 +226,28 @@ services:
         tmpfs:
           mode: 01777
 
+  unil-backend-server:
+    build:
+      context: $PWD/unil-backend-server
+    image: unil-backend-server:dev
+    container_name: unil-backend-server
+    hostname: unil-backend-server
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    ports:
+      - 8006:8080
+
+  unil-frontend:
+    build:
+      context: $PWD/unil-frontend
+    image: unil-frontend:dev
+    container_name: unil-frontend
+    hostname: unil-frontend
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    ports:
+      - 3001:8081
+
 volumes:
   datadir:
   cache:

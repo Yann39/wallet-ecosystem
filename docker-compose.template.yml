@@ -248,6 +248,18 @@ services:
     ports:
       - 3001:8081
 
+  unil-redis:
+    image: redis:latest
+    restart: always
+    container_name: unil-redis
+    hostname: unil-redis
+    ports:
+      - 6379:6379
+    environment:
+      - REDIS_PASSWORD=r3dis
+      - REDIS_PORT=6379
+      - REDIS_DATABASES=1
+
 volumes:
   datadir:
   cache:
